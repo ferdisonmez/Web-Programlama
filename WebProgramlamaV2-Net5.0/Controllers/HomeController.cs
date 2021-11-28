@@ -60,6 +60,33 @@ namespace WebProgramlamaV2_Net5._0.Controllers
             return View(usr);
         }
 
+        public IActionResult PatronKayit()
+        {
+            return View();
+        }
+        public IActionResult YazilimciKayit()
+        {
+            return View();
+        }
+        
+        public IActionResult PatronORYazilimci()
+        {
+            return View();
+        }
+        [HttpPost]
+        public IActionResult PatronORYazilimci1(String Deger)
+        {
+            if (Deger == "Patron")
+            {
+                return RedirectToAction("PatronKayit");
+            }
+            else
+            {
+                return RedirectToAction("YazilimciKayit");
+            }
+         
+        }
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
