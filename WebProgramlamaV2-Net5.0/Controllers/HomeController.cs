@@ -35,7 +35,7 @@ namespace WebProgramlamaV2_Net5._0.Controllers
 
         public IActionResult IlanVer()
         {
-            Console.WriteLine("Hello");
+           
             return View();
         }
 
