@@ -13,6 +13,7 @@ namespace WebProgramlamaV2_Net5._0.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         static public List<User> db = new List<User>();
+        static public List<String> str = new List<string> {"Ali","Osman","Veli"};
 
         public HomeController(ILogger<HomeController> logger)
         {
@@ -25,7 +26,7 @@ namespace WebProgramlamaV2_Net5._0.Controllers
         }
         public IActionResult Isara()
         {
-            return View();
+            return View(db);
         }
 
         public IActionResult About()
