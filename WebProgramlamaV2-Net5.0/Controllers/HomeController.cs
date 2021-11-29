@@ -13,6 +13,7 @@ namespace WebProgramlamaV2_Net5._0.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         static public List<User> db = new List<User>();
+        static public List<String> str = new List<string> {"Ali","Osman","Veli"};
 
         public HomeController(ILogger<HomeController> logger)
         {
@@ -25,7 +26,7 @@ namespace WebProgramlamaV2_Net5._0.Controllers
         }
         public IActionResult Isara()
         {
-            return View();
+            return View(db);
         }
 
         public IActionResult About()
@@ -100,6 +101,25 @@ namespace WebProgramlamaV2_Net5._0.Controllers
             return View();
         }
 
+     /*   public ActionResult IsaraDatabase(string option, string search)
+        {
+
+            //if a user choose the radio button option as Subject  
+            if (option =="Subjects")
+            {
+                //Index action method will return a view with a student records based on what a user specify the value in textbox  
+                return View(db.Students.Where(x = > x.Subjects == search || search == null).ToList());
+            }
+            else if (option == "Gender")
+            {
+                return View(db.Students.Where(x = > x.Gender == search || search == null).ToList());
+            }
+            else
+            {
+                return View(db.Students.Where(x = > x.Name.StartsWith(search) || search == null).ToList());
+            }
+        }
+        */
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
