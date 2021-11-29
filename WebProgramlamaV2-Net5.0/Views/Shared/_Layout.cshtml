@@ -237,12 +237,12 @@
                         <div class="row">
                             <div class="col-lg-6 col-sm-6">
                                 <fieldset>
-                                    <input type="submit" name="address" class="email" placeholder="Email Address..." autocomplete="on" required>
+                                    <input type="text" name="address" class="email" placeholder="Email Adresi..." autocomplete="on" required>
                                 </fieldset>
                             </div>
                             <div class="col-lg-6 col-sm-6">
                                 <fieldset>
-                                    <button  type="submit" class="main-button">Subscribe Now <i class="fa fa-angle-right"></i></button>
+                                    <input  type="submit" class="main-button">
                                 </fieldset>
                             </div>
                         </div>
@@ -250,53 +250,32 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-lg-3">
+                <div class="col-lg-4">
                     <div class="footer-widget">
-                        <h4>Contact Us</h4>
-                        <p>Rio de Janeiro - RJ, 22795-008, Brazil</p>
-                        <p><a href="#">010-020-0340</a></p>
-                        <p><a href="#">info@company.co</a></p>
+                        <h4>İletişim</h4>
+                        <p>İstanbul/Türkiye</p>
+                        <p><a >Posta Kodu: 00000</a></p>
+                        <p><a >info@techilan.com</a></p>
                     </div>
                 </div>
-                <div class="col-lg-3">
+                <div class="col-lg-4">
                     <div class="footer-widget">
-                        <h4>About Us</h4>
+                        <h4>Linkler</h4>
                         <ul>
-                            <li><a href="#">Home</a></li>
-                            <li><a href="#">Services</a></li>
-                            <li><a href="#">About</a></li>
-                            <li><a href="#">Testimonials</a></li>
-                            <li><a href="#">Pricing</a></li>
-                        </ul>
-                        <ul>
-                            <li><a href="#">About</a></li>
-                            <li><a href="#">Testimonials</a></li>
-                            <li><a href="#">Pricing</a></li>
-                        </ul>
+                            <li><a asp-action="Index" asp-controller="Home">Anasayfa</a></li>
+                            <li><a asp-action="IlanVer" asp-controller="Home">İlan Ver</a></li>
+                            <li><a asp-action="Isara" asp-controller="Home">İş Arama</a></li>
+                            <li><a href="#newsletter">Bildirim Al</a></li>                            
+                            <li><a asp-action="About" asp-controller="Home">Hakkımızda</a></li>
+                        </ul>                      
                     </div>
                 </div>
-                <div class="col-lg-3">
+
+                <div class="col-lg-4">
                     <div class="footer-widget">
-                        <h4>Useful Links</h4>
-                        <ul>
-                            <li><a href="#">Free Apps</a></li>
-                            <li><a href="#">App Engine</a></li>
-                            <li><a href="#">Programming</a></li>
-                            <li><a href="#">Development</a></li>
-                            <li><a href="#">App News</a></li>
-                        </ul>
-                        <ul>
-                            <li><a href="#">App Dev Team</a></li>
-                            <li><a href="#">Digital Web</a></li>
-                            <li><a href="#">Normal Apps</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-lg-3">
-                    <div class="footer-widget">
-                        <h4>About Our Company</h4>
+                        <h4>Şirket Hakkında</h4>
                         <div class="logo">
-                            <a asp-action="Index" asp-controller="Home" aspa  ><img src="/assets/images/TECHİLAN.png" alt=""></a>
+                            <a asp-action="Index" asp-controller="Home"><img src="/assets/images/TECHİLAN.png" alt=""></a>
                         </div>
                         <p>Techilan, şirketine yazılımcı arayan işverenler, gereksinimleri güzel açıklanmış iş ilanları ve yazılımcıları buluşturan yeni nesil bir iş ilan platformudur.</p>
                     </div>
@@ -314,7 +293,6 @@
             </div>
         </div>
     </footer>
-
 
     <!-- Scripts -->
     <script src="/vendor/jquery/jquery.min.js"></script>
