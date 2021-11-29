@@ -39,6 +39,11 @@ namespace WebProgramlamaV2_Net5._0.Controllers
             return View();
         }
 
+        public IActionResult IlanBasvuru()
+        {
+           
+            return View();
+        }
         public IActionResult UserKayit()
         {
             return View();
