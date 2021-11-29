@@ -86,6 +86,14 @@ namespace WebProgramlamaV2_Net5._0.Controllers
             }
          
         }
+        public IActionResult PatronEnter()
+        {
+            return View();
+        }
+        public IActionResult YazilimciEnter()
+        {
+            return View();
+        }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
