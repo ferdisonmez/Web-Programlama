@@ -62,7 +62,8 @@
                             <li class="scroll-to-section"><a asp-action="IlanVer" asp-controller="Home">İlan Ver</a></li>
                             <li class="scroll-to-section"><a href="#newsletter">Bildirim Al</a></li>
                             <li class="scroll-to-section"><a asp-action="About" asp-controller="Home">Hakkında</a></li>
-                            <li><div class="gradient-button"><a id="modal_trigger" href="#modal"><i class="fa fa-sign-in-alt"></i>Kayıt Ol</a></div></li>
+                            <li><div class="gradient-button"><a asp-action="PatronORYazilimci" asp-controller="Home"><i class="fa fa-sign-in-alt"></i>Giriş</a></div></li>
+                            <li><div class="gradient-button"><a asp-action="PatronORYazilimci" asp-controller="Home"><i class="fa fa-sign-in-alt"></i>Kayıt Ol</a></div></li>
                         </ul>
                         <a class='menu-trigger'>
                             <span>Menu</span>
@@ -74,145 +75,6 @@
         </div>
     </header>
     <!-- ***** Header Area End ***** -->
-    <div id="modal" class="popupContainer" style="display:none;">
-        <div class="popupHeader">
-            <span class="header_title">Giriş</span>
-            <span class="modal_close"><i class="fa fa-times"></i></span>
-        </div>
-
-        <section class="popupBody">
-            <!-- Social Login -->
-            <div class="social_login">
-                <div class="">
-                    <a href="#" class="social_box fb">
-                        <span class="icon"><i class="fab fa-facebook"></i></span>
-                        <span class="icon_title">Connect with Facebook</span>
-
-                    </a>
-
-                    <a href="#" class="social_box google">
-                        <span class="icon"><i class="fab fa-google-plus"></i></span>
-                        <span class="icon_title">Connect with Google</span>
-                    </a>
-                </div>
-
-                <div class="centeredText">
-                    <span>Email Adresi</span>
-                </div>
-
-                <div class="action_btns">
-                    <div class="one_half"><a href="#" id="login_form" class="btn">Giriş</a></div>
-                    <div class="one_half last"><a href="#" id="register_form" class="btn">Kayıt Ol</a></div>
-                </div>
-            </div>
-
-            <!-- Username & Password Login form -->
-            <div class="user_login">
-                <form method="post" asp-action="UserEnter" asp-controller="Home">
-                    <div class="d-flex flex-row align-items-center mb-4">
-                        <i class="fas fa-user fa-lg me-3 fa-fw"></i>
-                        <div class="form-outline flex-fill mb-0">
-                            <input type="text" id="form3Example1c" class="form-control" name="Name" />
-                            <label class="form-label" for="Name">İsminizi Girin</label>
-                        </div>
-                    </div>
-
-                    <div class="d-flex flex-row align-items-center mb-4">
-                        <i class="fas fa-user fa-lg me-3 fa-fw"></i>
-                        <div class="form-outline flex-fill mb-0">
-                            <input type="text" id="form3Example1c" class="form-control" name="Surname" />
-                            <label class="form-label" for="Surname">Soyisminizi Girin</label>
-                        </div>
-                    </div>
-
-                    <div class="d-flex flex-row align-items-center mb-4">
-                        <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
-                        <div class="form-outline flex-fill mb-0">
-                            <input type="email" id="form3Example3c" class="form-control" name="Email" />
-                            <label class="form-label" for="Email">Email Giriniz</label>
-                        </div>
-                    </div>
-
-                    <div class="d-flex flex-row align-items-center mb-4">
-                        <i class="fas fa-lock fa-lg me-3 fa-fw"></i>
-                        <div class="form-outline flex-fill mb-0">
-                            <input type="password" id="form3Example4c" class="form-control" name="Parola" />
-                            <label class="form-label" for="Parola">Parola Giriniz</label>
-                        </div>
-                    </div>
-
-                    <div class="form-check d-flex justify-content-center mb-5">
-                        <input class="form-check-input me-2"
-                               type="checkbox"
-                               value=""
-                               id="form2Example3c" />
-                        <label class="form-check-label" for="form2Example3">
-                            I agree all statements in <a href="#!">Terms of service</a>
-                        </label>
-                    </div>
-
-                    <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
-                        <button type="submit" class="btn btn-primary btn-lg">Giriş</button>
-                    </div>
-                </form>
-
-            </div>
-
-            <!-- Register Form -->
-            <div class="user_register">
-                <form method="post" asp-action="Bastir" asp-controller="Home">
-                    <div class="d-flex flex-row align-items-center mb-4">
-                        <i class="fas fa-user fa-lg me-3 fa-fw"></i>
-                        <div class="form-outline flex-fill mb-0">
-                            <input type="text" id="form3Example1c" class="form-control" name="Name" />
-                            <label class="form-label" for="Name">İsminizi Girin</label>
-                        </div>
-                    </div>
-
-                    <div class="d-flex flex-row align-items-center mb-4">
-                        <i class="fas fa-user fa-lg me-3 fa-fw"></i>
-                        <div class="form-outline flex-fill mb-0">
-                            <input type="text" id="form3Example1c" class="form-control" name="Surname" />
-                            <label class="form-label" for="Surname">Soyisminizi Girin</label>
-                        </div>
-                    </div>
-
-                    <div class="d-flex flex-row align-items-center mb-4">
-                        <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
-                        <div class="form-outline flex-fill mb-0">
-                            <input type="email" id="form3Example3c" class="form-control" name="Email" />
-                            <label class="form-label" for="Email">Email Giriniz</label>
-                        </div>
-                    </div>
-
-                    <div class="d-flex flex-row align-items-center mb-4">
-                        <i class="fas fa-lock fa-lg me-3 fa-fw"></i>
-                        <div class="form-outline flex-fill mb-0">
-                            <input type="password" id="form3Example4c" class="form-control" name="Parola" />
-                            <label class="form-label" for="Parola">Parola Giriniz</label>
-                        </div>
-                    </div>
-
-                    <div class="form-check d-flex justify-content-center mb-5">
-                        <input class="form-check-input me-2"
-                               type="checkbox"
-                               value=""
-                               id="form2Example3c" />
-                        <label class="form-check-label" for="form2Example3">
-                            I agree all statements in <a href="#!">Terms of service</a>
-                        </label>
-                    </div>
-
-                    <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
-                        <button type="submit" class="btn btn-primary btn-lg">Kaydol</button>
-                    </div>
-                </form>
-                <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
-                    <button type="submit" class="btn btn-primary btn-lg">Kaydol</button>
-                </div>
-            </div>
-        </section>
-    </div>
     <br />
     <br />
     <br />

@@ -86,11 +86,19 @@ namespace WebProgramlamaV2_Net5._0.Controllers
             {
                 return RedirectToAction("PatronKayit");
             }
+            else if (Deger=="Admin")
+            {
+                return RedirectToAction("AdminEnter");
+            }
             else
             {
                 return RedirectToAction("YazilimciKayit");
             }
          
+        }
+        public IActionResult AdminEnter()
+        {
+            return View();
         }
         public IActionResult PatronEnter()
         {
