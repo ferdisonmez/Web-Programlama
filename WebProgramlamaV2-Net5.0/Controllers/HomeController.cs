@@ -75,12 +75,16 @@ namespace WebProgramlamaV2_Net5._0.Controllers
             return View();
         }
         
-        public IActionResult PatronORYazilimci()
+        public IActionResult UserGirisSecim()
+        {
+            return View();
+        }
+        public IActionResult UserKayitSecim()
         {
             return View();
         }
         [HttpPost]
-        public IActionResult PatronORYazilimci1(String Deger)
+        public IActionResult KullaniciRegister(String Deger)
         {
             if (Deger == "Patron")
             {
@@ -95,6 +99,24 @@ namespace WebProgramlamaV2_Net5._0.Controllers
                 return RedirectToAction("YazilimciKayit");
             }
          
+        }
+
+        [HttpPost]
+        public IActionResult KullaniciEnter(String Deger)
+        {
+            if (Deger == "Patron")
+            {
+                return RedirectToAction("PatronEnter");
+            }
+            else if (Deger == "Admin")
+            {
+                return RedirectToAction("AdminEnter");
+            }
+            else
+            {
+                return RedirectToAction("YazilimciEnter");
+            }
+
         }
         public IActionResult AdminEnter()
         {

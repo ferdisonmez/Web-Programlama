@@ -1,0 +1,18 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<h4>Lütfen, kayıt yapılmak istenen kullanıcı türü seçin</h4>
+
+<form method="post" asp-action="KullaniciRegister" asp-controller="Home">
+    <label for="Deger"></label>
+    <select class="form-select-lg" name="Deger" id="Deger" multiple>
+        <option value="Patron">Patron</option>
+        <option value="Yazilimci">Yazilimci</option>
+        <option value="Admin">Admin</option>
+    </select>
+    <br><br>
+    <input type="submit" value="Seç">
+</form>
+

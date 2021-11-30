@@ -3,16 +3,16 @@
 *@
 @{
 }
-    <h1>Giris Yapmak İstediginiz Kullanıcı Türünü Seçiniz</h1>
+    <h4>Lütfen, giriş yapmak istediğiniz kullanıcı türünü seçiniz</h4>
 
-    <form method="post" asp-action="PatronORYazilimci1" asp-controller="Home">
+    <form method="post" asp-action="KullaniciEnter" asp-controller="Home">
         <label for="Deger"></label>
-        <select name="Deger" id="cars" multiple>
+        <select class="form-select-lg" name="Deger" id="Deger" multiple>
             <option value="Patron">Patron</option>
             <option value="Yazilimci">Yazilimci</option>
             <option value="Admin">Admin</option>
         </select>
         <br><br>
-        <input type="submit" value="Gönder">
+        <input type="submit" value="Seç">
     </form>
 
