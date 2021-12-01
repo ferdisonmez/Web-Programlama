@@ -1,9 +1,9 @@
-﻿@model IEnumerable<WebProgramlamaV2_Net5._0.Models.User>
+﻿@model IEnumerable<WebProgramlamaV2_Net5._0.Models.Isilani>
 
 @{
     ViewData["Title"] = "Isara";
 }
-@using (Html.BeginForm("Index", "Home", FormMethod.Get))
+@using (Html.BeginForm("IsaraDatabase", "Home", FormMethod.Get))
 {  
 <b>Arama Seçeneği: </b>@Html.RadioButton("option", "Şirket İsmi") <text>Şirket İsmi</text> @Html.RadioButton("option", "Lokasyon") <text> Lokasyon </text>
     @Html.RadioButton("option", "Pozisyon")<text>Pozisyon</text> @Html.TextBox("search") <input type="submit" name="submit" value="Search"/>
@@ -17,16 +17,16 @@
         <thead>
             <tr>
                 <th>
-                    @Html.DisplayNameFor(model => model.Name)
+                    @Html.DisplayNameFor(model => model.sirketismi)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.Surname)
+                    @Html.DisplayNameFor(model => model.lokasyon)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.Email)
+                    @Html.DisplayNameFor(model => model.pozisyon)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.Parola)
+                    @Html.DisplayNameFor(model => model.aciklama)
                 </th>
                 <th></th>
             </tr>
@@ -36,16 +36,16 @@
             {
                 <tr>
                     <td>
-                        @Html.DisplayFor(modelItem => item.Name)
+                        @Html.DisplayFor(modelItem => item.sirketismi)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.Surname)
+                        @Html.DisplayFor(modelItem => item.lokasyon)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.Email)
+                        @Html.DisplayFor(modelItem => item.pozisyon)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.Parola)
+                        @Html.DisplayFor(modelItem => item.aciklama)
                     </td>
                     <td>
                         @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |

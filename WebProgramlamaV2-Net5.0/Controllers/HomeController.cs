@@ -12,8 +12,8 @@ namespace WebProgramlamaV2_Net5._0.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-        static public List<User> db = new List<User>();
-        static public List<String> str = new List<string> {"Ali","Osman","Veli"};
+        static public List<Patron> db = new List<Patron>();
+        static public List<Yazilimci> dby = new List<Yazilimci>();
         static public List<Isilani> ilan = new List<Isilani>();
 
         public HomeController(ILogger<HomeController> logger)
@@ -27,7 +27,7 @@ namespace WebProgramlamaV2_Net5._0.Controllers
         }
         public IActionResult Isara()
         {
-            return View(db);
+            return View(ilan);
         }
 
         public IActionResult About()
@@ -46,41 +46,26 @@ namespace WebProgramlamaV2_Net5._0.Controllers
            
             return View();
         }
-        public IActionResult UserKayit()
-        {
-            return View();
-        }
-        [HttpPost]
-        public IActionResult Bastir(User user)
-        {
-            db.Add(user);
-            return RedirectToAction("Goster");
-
-        }
-        public IActionResult Goster()
-        {
-            return View(db);
-        }
-        [HttpPost]
-        public IActionResult UserEnter(User usr)
-        {
-            return View(usr);
-        }
-
         public IActionResult PatronKayit()
         {
             return View();
         }
-        public IActionResult PatronKayitBackend(User user)
+        [HttpPost]
+        public IActionResult PatronKayitBackend(Patron ptr)
         {
-            db.Add(user);
-            return View(user);
+            db.Add(ptr);
+            return View(ptr);
         }
         public IActionResult YazilimciKayit()
         {
             return View();
         }
-        
+        public IActionResult YazilimciKayitBackend(Yazilimci yzm)
+        {
+            dby.Add(yzm);
+            return View(yzm);
+        }
+
         public IActionResult UserGirisSecim()
         {
             return View();
@@ -147,25 +132,25 @@ namespace WebProgramlamaV2_Net5._0.Controllers
         {
             return View(ilan);
         }
-        /*   public ActionResult IsaraDatabase(string option, string search)
+           public ActionResult IsaraDatabase(string option, string search)
            {
 
                //if a user choose the radio button option as Subject  
-               if (option =="Subjects")
+               if (option == "Şirket İsmi")
                {
                    //Index action method will return a view with a student records based on what a user specify the value in textbox  
-                   return View(db.Students.Where(x = > x.Subjects == search || search == null).ToList());
+                   return View(ilan.Where(x => x.sirketismi == search || search == null).ToList());
                }
-               else if (option == "Gender")
+               else if (option == "Lokasyon")
                {
-                   return View(db.Students.Where(x = > x.Gender == search || search == null).ToList());
+                   return View(ilan.Where(x => x.lokasyon == search || search == null).ToList());
                }
                else
                {
-                   return View(db.Students.Where(x = > x.Name.StartsWith(search) || search == null).ToList());
+                   return View(ilan.Where(x => x.deneyim.StartsWith(search) || search == null).ToList());
                }
            }
-           */
+           
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
