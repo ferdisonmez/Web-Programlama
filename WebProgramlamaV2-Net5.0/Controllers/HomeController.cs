@@ -70,6 +70,11 @@ namespace WebProgramlamaV2_Net5._0.Controllers
         {
             return View();
         }
+        public IActionResult PatronKayitBackend(User user)
+        {
+            db.Add(user);
+            return View(user);
+        }
         public IActionResult YazilimciKayit()
         {
             return View();
