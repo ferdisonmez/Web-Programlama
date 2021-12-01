@@ -23,7 +23,7 @@ namespace WebProgramlamaV2_Net5._0.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            return View(ilan);
         }
         public IActionResult Isara()
         {
@@ -147,7 +147,7 @@ namespace WebProgramlamaV2_Net5._0.Controllers
                }
                else
                {
-                   return View(ilan.Where(x => x.deneyim.StartsWith(search) || search == null).ToList());
+                   return View(ilan.Where(x => x.pozisyon.StartsWith(search) || search == null).ToList());
                }
            }
            
