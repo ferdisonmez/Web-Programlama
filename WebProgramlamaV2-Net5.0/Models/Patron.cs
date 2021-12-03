@@ -18,6 +18,7 @@ namespace WebProgramlamaV2_Net5._0.Models
         public String Parola { get; set; }
         [Required]
         public String Sirket { get; set; }
+       
 
     }
 }
