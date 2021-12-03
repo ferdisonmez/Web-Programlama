@@ -31,20 +31,23 @@
         <tbody>
             @foreach (var item in Model)
             {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.sirketismi)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.lokasyon)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.pozisyon)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.aciklama)
-                    </td>
-                </tr>
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.sirketismi)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.lokasyon)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.pozisyon)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.aciklama)
+                </td>
+                <td>
+                    @Html.ActionLink("Detaylar ve Başvuru", "IlanSayfasi", "Home", new { item.id })
+                </td>
+            </tr>
             }
         </tbody>
     </table>

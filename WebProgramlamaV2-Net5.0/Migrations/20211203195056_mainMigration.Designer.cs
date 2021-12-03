@@ -9,7 +9,7 @@ using WebProgramlamaV2_Net5._0.Models;
 namespace WebProgramlamaV2_Net5._0.Migrations
 {
     [DbContext(typeof(Context))]
-    [Migration("20211202180945_mainMigration")]
+    [Migration("20211203195056_mainMigration")]
     partial class mainMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -28,12 +28,14 @@ namespace WebProgramlamaV2_Net5._0.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Email")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Parola")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Surname")
@@ -42,6 +44,27 @@ namespace WebProgramlamaV2_Net5._0.Migrations
                     b.HasKey("id");
 
                     b.ToTable("Admins");
+                });
+
+            modelBuilder.Entity("WebProgramlamaV2_Net5._0.Models.Basvuru", b =>
+                {
+                    b.Property<int>("kayitId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("IsilaniId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("PatronId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("yazilimciId")
+                        .HasColumnType("int");
+
+                    b.HasKey("kayitId");
+
+                    b.ToTable("Basvurular");
                 });
 
             modelBuilder.Entity("WebProgramlamaV2_Net5._0.Models.Isilani", b =>
@@ -79,15 +102,18 @@ namespace WebProgramlamaV2_Net5._0.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Email")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Parola")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Sirket")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Surname")
@@ -106,15 +132,31 @@ namespace WebProgramlamaV2_Net5._0.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Email")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Parola")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Surname")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("education")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("experience")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("progLang")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("id");

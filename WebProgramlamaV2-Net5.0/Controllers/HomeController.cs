@@ -14,8 +14,9 @@ namespace WebProgramlamaV2_Net5._0.Controllers
         private readonly ILogger<HomeController> _logger;
         static public List<Patron> db = new List<Patron>();
         static public List<Yazilimci> dby = new List<Yazilimci>();
-        static public List<Isilani> ilan = new List<Isilani>();
-
+        static public List<Isilani> ilanlar = new List<Isilani>();
+        
+        Context dbServer = new Context();
         public HomeController(ILogger<HomeController> logger)
         {
             _logger = logger;
@@ -23,10 +24,20 @@ namespace WebProgramlamaV2_Net5._0.Controllers
 
         public IActionResult Index()
         {
-            return View(ilan);
+         
+            ilanlar = dbServer.isilanlari.ToList();
+            return View(ilanlar);
         }
         public IActionResult Isara()
         {
+            ilanlar = dbServer.isilanlari.ToList();
+            return View(ilanlar);
+        }
+
+        public IActionResult IlanSayfasi(int id)
+        {
+            var ilan = dbServer.isilanlari.Find(id);
+
             return View(ilan);
         }
 
@@ -35,17 +46,20 @@ namespace WebProgramlamaV2_Net5._0.Controllers
             return View();
         }
 
-        public IActionResult IlanVer(Isilani isln)
-        {
-           
-            return View(isln);
-        }
 
-        public IActionResult IlanBasvuru()
+        public IActionResult IlanVer()
         {
            
             return View();
         }
+
+        [HttpPost]
+        public IActionResult IlanBasvuru()
+        {
+            //
+            return View();
+        }
+
         public IActionResult PatronKayit()
         {
             return View();
@@ -53,8 +67,9 @@ namespace WebProgramlamaV2_Net5._0.Controllers
         [HttpPost]
         public IActionResult PatronKayitBackend(Patron ptr)
         {
-            db.Add(ptr);
-            return View(ptr);
+            dbServer.patronlar.Add(ptr);
+            dbServer.SaveChanges();
+            return RedirectToAction("PatronEnter");
         }
         public IActionResult YazilimciKayit()
         {
@@ -62,8 +77,9 @@ namespace WebProgramlamaV2_Net5._0.Controllers
         }
         public IActionResult YazilimciKayitBackend(Yazilimci yzm)
         {
-            dby.Add(yzm);
-            return View(yzm);
+            dbServer.yazilimcilar.Add(yzm);
+            dbServer.SaveChanges();
+            return RedirectToAction("YazilimciEnter");
         }
 
         public IActionResult UserGirisSecim()
@@ -125,29 +141,28 @@ namespace WebProgramlamaV2_Net5._0.Controllers
         public IActionResult IsilaniEnter(Isilani isln)
         {
            
-            ilan.Add(isln);
-            return RedirectToAction("IsilaniEnter1");
-        }
-        public IActionResult IsilaniEnter1()
-        {
-            return View(ilan);
+            dbServer.isilanlari.Add(isln);
+            dbServer.SaveChanges();
+            return RedirectToAction("Index");
         }
            public ActionResult IsaraDatabase(string option, string search)
            {
 
+            ilanlar = dbServer.isilanlari.ToList();
                //if a user choose the radio button option as Subject  
                if (option == "Şirket İsmi")
                {
                    //Index action method will return a view with a student records based on what a user specify the value in textbox  
-                   return View(ilan.Where(x => x.sirketismi == search || search == null).ToList());
+
+                   return View(ilanlar.Where(x => x.sirketismi == search || search == null).ToList());
                }
                else if (option == "Lokasyon")
                {
-                   return View(ilan.Where(x => x.lokasyon == search || search == null).ToList());
+                   return View(ilanlar.Where(x => x.lokasyon == search || search == null).ToList());
                }
                else
                {
-                   return View(ilan.Where(x => x.pozisyon.StartsWith(search) || search == null).ToList());
+                   return View(ilanlar.Where(x => x.pozisyon.StartsWith(search) || search == null).ToList());
                }
            }
            

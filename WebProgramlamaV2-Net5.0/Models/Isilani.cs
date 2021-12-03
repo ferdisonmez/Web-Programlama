@@ -8,7 +8,7 @@ namespace WebProgramlamaV2_Net5._0.Models
 {
     public class Isilani
     {
-        [Key]
+        [Key][Required]
         public int id { get; set; }
         [Display(Name="Şirket İsmi")]
         public String sirketismi { get; set; }

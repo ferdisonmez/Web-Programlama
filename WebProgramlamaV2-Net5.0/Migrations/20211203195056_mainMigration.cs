@@ -14,12 +14,27 @@ namespace WebProgramlamaV2_Net5._0.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Surname = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Email = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Parola = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Parola = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Admins", x => x.id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Basvurular",
+                columns: table => new
+                {
+                    kayitId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    IsilaniId = table.Column<int>(type: "int", nullable: false),
+                    PatronId = table.Column<int>(type: "int", nullable: false),
+                    yazilimciId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Basvurular", x => x.kayitId);
                 });
 
             migrationBuilder.CreateTable(
@@ -47,9 +62,9 @@ namespace WebProgramlamaV2_Net5._0.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Surname = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Email = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Parola = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Sirket = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Parola = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Sirket = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -62,10 +77,13 @@ namespace WebProgramlamaV2_Net5._0.Migrations
                 {
                     id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Surname = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Email = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Parola = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Surname = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    education = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    progLang = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    experience = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Parola = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -77,6 +95,9 @@ namespace WebProgramlamaV2_Net5._0.Migrations
         {
             migrationBuilder.DropTable(
                 name: "Admins");
+
+            migrationBuilder.DropTable(
+                name: "Basvurular");
 
             migrationBuilder.DropTable(
                 name: "isilanlari");

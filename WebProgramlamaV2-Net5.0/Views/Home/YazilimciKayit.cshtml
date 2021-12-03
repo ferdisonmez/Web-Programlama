@@ -13,25 +13,66 @@
                         <div class="card-body p-5">
                             <h2 class="text-uppercase text-center mb-5">Hesap Oluştur</h2>
 
-                            <form method="post" asp-action="" asp-controller="">
+                            <form method="post" asp-action="YazilimciKayitBackend" asp-controller="Home">
 
                                 <div class="form-outline mb-4">
-                                    <input type="text" name="name" id="form3Example1cg" class="form-control form-control-lg" />
+                                    <input type="text" name="Name" id="form3Example1cg" class="form-control form-control-lg" />
                                     <label class="form-label" for="form3Example1cg">İsim</label>
                                 </div>
 
+
                                 <div class="form-outline mb-4">
-                                    <input type="text" name="surname" id="form3Example1cg" class="form-control form-control-lg" />
+                                    <input type="text" name="Surname" id="form3Example1cg" class="form-control form-control-lg" />
                                     <label class="form-label" for="form3Example1cg">Soyisim</label>
                                 </div>
 
                                 <div class="form-outline mb-4">
-                                    <input type="email" name="mail" id="form3Example3cg" class="form-control form-control-lg" />
+
+                                    <div class="col-12">
+                                        <textarea id="progLang" name="progLang" class="form-control form-control-lg" required="required"></textarea>
+                                    </div>
+                                    <label class="col-4 col-form-label" for="progLang">Programlama Yetenekleri:</label>
+                                </div>
+                                <div class="form-outline mb-4">
+
+                                    <div class="col-12">
+                                        <textarea id="education" name="education"  class="form-control form-control-lg" required="required"></textarea>
+                                    </div>
+                                    <label for="education" class="col-4 col-form-label">Eğitim Bilgileri:</label>
+                                </div>
+                                <div class="form-outline mb-4">
+                                    <label class="col-4 col-form-label">Deneyim</label>
+                                    <div class="col-8">
+                                        <div class="custom-controls-stacked">
+                                            <div class="custom-control custom-radio">
+                                                <input name="experience" id="experience_0" type="radio" class="custom-control-input" value="Junior" required="required">
+                                                <label for="experience_0" class="custom-control-label">Junior</label>
+                                            </div>
+                                        </div>
+                                        <div class="custom-controls-stacked">
+                                            <div class="custom-control custom-radio">
+                                                <input name="experience" id="experience_1" type="radio" class="custom-control-input" value="Mid" required="required">
+                                                <label for="experience_1" class="custom-control-label">Mid</label>
+                                            </div>
+                                        </div>
+                                        <div class="custom-controls-stacked">
+                                            <div class="custom-control custom-radio">
+                                                <input name="experience" id="experience_2" type="radio" class="custom-control-input" value="Senior" required="required">
+                                                <label for="experience_2" class="custom-control-label">Senior</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
+                                <div class="form-outline mb-4">
+                                    <input type="email" name="Email" id="form3Example3cg" class="form-control form-control-lg" />
                                     <label class="form-label" for="form3Example3cg">Email</label>
                                 </div>
 
                                 <div class="form-outline mb-4">
-                                    <input type="password" name="password" id="form3Example4cg" class="form-control form-control-lg" />
+                                    <input type="password" name="Parola" id="form3Example4cg" class="form-control form-control-lg" />
                                     <label class="form-label" for="form3Example4cg">Parola</label>
                                 </div>
 
@@ -50,3 +91,8 @@
         </div>
     </div>
 </section>
+
+
+
+
+

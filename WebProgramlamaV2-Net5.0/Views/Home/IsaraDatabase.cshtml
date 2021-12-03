@@ -25,28 +25,26 @@
     <tbody>
         @foreach (var item in Model)
         {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.sirketismi)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.lokasyon)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.pozisyon)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.deneyim)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.aciklama)
-                </td>
-                <td>
-                    @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                    @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                    @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-                </td>
-            </tr>
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.sirketismi)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.lokasyon)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.pozisyon)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.deneyim)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.aciklama)
+            </td>
+            <td>
+                @Html.ActionLink("Detaylar ve Başvuru", "IlanSayfasi", "Home", new { item.id })
+            </td>
+        </tr>
         }
     </tbody>
 </table>

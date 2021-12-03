@@ -6,18 +6,17 @@ using System.Threading.Tasks;
 
 namespace WebProgramlamaV2_Net5._0.Models
 {
-    public class Patron
+    public class Basvuru
     {
         [Key]
-        public int id { get; set; }
-        public String Name { get; set; }
-        public String Surname { get; set; }
         [Required]
-        public String Email { get; set; }
+        public int kayitId { get; set; }
         [Required]
-        public String Parola { get; set; }
+        public int IsilaniId { get; set; }
         [Required]
-        public String Sirket { get; set; }
+        public int PatronId { get; set; }
+        [Required]
+        public int yazilimciId { get; set; }
 
     }
 }
