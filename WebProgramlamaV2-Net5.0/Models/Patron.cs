@@ -15,6 +15,7 @@ namespace WebProgramlamaV2_Net5._0.Models
         public String Email { get; set; }
         public String Parola { get; set; }
         public String Sirket { get; set; }
+       
 
     }
 }
