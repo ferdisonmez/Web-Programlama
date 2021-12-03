@@ -20,5 +20,6 @@ namespace WebProgramlamaV2_Net5._0.Models
         public String deneyim { get; set; }
         [Display(Name = "Açıklama")]
         public String aciklama { get; set; }
+        public int Patronid { get; set; }
     }
 }
