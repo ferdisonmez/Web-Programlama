@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNetCore.Http
+@inject IHttpContextAccessor _httpHttpContextAccessor;
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -62,8 +64,25 @@
                             <li class="scroll-to-section"><a asp-action="IlanVer" asp-controller="Home">İlan Ver</a></li>
                             <li class="scroll-to-section"><a href="#newsletter">Bildirim Al</a></li>
                             <li class="scroll-to-section"><a asp-action="About" asp-controller="Home">Hakkında</a></li>
-                            <li><div class="gradient-button"><a asp-action="UserGirisSecim" asp-controller="Home"><i class="fa fa-sign-in-alt"></i>Giriş</a></div></li>
-                            <li><div class="gradient-button"><a asp-action="UserKayitSecim" asp-controller="Home"><i class="fa fa-sign-in-alt"></i>Kayıt Ol</a></div></li>
+
+                            @if (_httpHttpContextAccessor.HttpContext.User.Identity.IsAuthenticated)
+                            {
+
+                                <li><div class="gradient-button"><a asp-action="SignOut" asp-controller="Home"><i class="fa fa-sign-in-alt"></i>Çıkış</a></div></li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark">@_httpHttpContextAccessor.HttpContext.User.Claims.FirstOrDefault(c => c.Type == "Name").Value</a>
+                                </li>
+                            }
+                            else
+                            {
+
+
+                                <li><div class="gradient-button"><a asp-action="UserGirisSecim" asp-controller="Home"><i class="fa fa-sign-in-alt"></i>Giriş</a></div></li>
+                                <li><div class="gradient-button"><a asp-action="UserKayitSecim" asp-controller="Home"><i class="fa fa-sign-in-alt"></i>Kayıt Ol</a></div></li>
+
+                            }
+
+
                         </ul>
                         <a class='menu-trigger'>
                             <span>Menu</span>
@@ -104,7 +123,7 @@
                             </div>
                             <div class="col-lg-6 col-sm-6">
                                 <fieldset>
-                                    <input  type="submit" class="main-button">
+                                    <input type="submit" class="main-button">
                                 </fieldset>
                             </div>
                         </div>
@@ -116,8 +135,8 @@
                     <div class="footer-widget">
                         <h4>İletişim</h4>
                         <p>İstanbul/Türkiye</p>
-                        <p><a >Posta Kodu: 00000</a></p>
-                        <p><a >info@techilan.com</a></p>
+                        <p><a>Posta Kodu: 00000</a></p>
+                        <p><a>info@techilan.com</a></p>
                     </div>
                 </div>
                 <div class="col-lg-4">
@@ -127,9 +146,9 @@
                             <li><a asp-action="Index" asp-controller="Home">Anasayfa</a></li>
                             <li><a asp-action="IlanVer" asp-controller="Home">İlan Ver</a></li>
                             <li><a asp-action="Isara" asp-controller="Home">İş Arama</a></li>
-                            <li><a href="#newsletter">Bildirim Al</a></li>                            
+                            <li><a href="#newsletter">Bildirim Al</a></li>
                             <li><a asp-action="About" asp-controller="Home">Hakkımızda</a></li>
-                        </ul>                      
+                        </ul>
                     </div>
                 </div>
 

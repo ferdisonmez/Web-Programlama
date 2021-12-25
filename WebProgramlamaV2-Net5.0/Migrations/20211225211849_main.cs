@@ -2,7 +2,7 @@
 
 namespace WebProgramlamaV2_Net5._0.Migrations
 {
-    public partial class mainMigration : Migration
+    public partial class main : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -15,7 +15,9 @@ namespace WebProgramlamaV2_Net5._0.Migrations
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Surname = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Parola = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    Parola = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    isPersistent = table.Column<bool>(type: "bit", nullable: false),
+                    Rolename = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -64,7 +66,9 @@ namespace WebProgramlamaV2_Net5._0.Migrations
                     Surname = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Parola = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Sirket = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    Sirket = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    isPersistent = table.Column<bool>(type: "bit", nullable: false),
+                    Rolename = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -83,7 +87,9 @@ namespace WebProgramlamaV2_Net5._0.Migrations
                     progLang = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     experience = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Parola = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    Parola = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    isPersistent = table.Column<bool>(type: "bit", nullable: false),
+                    Rolename = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {

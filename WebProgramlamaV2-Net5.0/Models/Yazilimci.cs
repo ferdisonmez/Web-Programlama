@@ -26,5 +26,8 @@ namespace WebProgramlamaV2_Net5._0.Models
         public String Email { get; set; }
         [Required]
         public String Parola { get; set; }
+
+        public bool isPersistent { get; set; }
+        public String Rolename { get; set; }
     }
 }

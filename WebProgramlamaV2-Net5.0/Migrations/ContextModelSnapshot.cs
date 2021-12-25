@@ -36,8 +36,14 @@ namespace WebProgramlamaV2_Net5._0.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Rolename")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Surname")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("isPersistent")
+                        .HasColumnType("bit");
 
                     b.HasKey("id");
 
@@ -110,12 +116,18 @@ namespace WebProgramlamaV2_Net5._0.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Rolename")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Sirket")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Surname")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("isPersistent")
+                        .HasColumnType("bit");
 
                     b.HasKey("id");
 
@@ -141,6 +153,9 @@ namespace WebProgramlamaV2_Net5._0.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Rolename")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Surname")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -152,6 +167,9 @@ namespace WebProgramlamaV2_Net5._0.Migrations
                     b.Property<string>("experience")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("isPersistent")
+                        .HasColumnType("bit");
 
                     b.Property<string>("progLang")
                         .IsRequired()

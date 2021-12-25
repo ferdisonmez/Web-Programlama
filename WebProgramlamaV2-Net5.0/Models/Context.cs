@@ -11,7 +11,7 @@ namespace WebProgramlamaV2_Net5._0.Models
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("server=LAPTOP-7VBS23NT; database=platformDB; integrated security=true;");
+            optionsBuilder.UseSqlServer("server=LAPTOP-7VBS23NT; database=projectDB; integrated security=true;");
 
         }
         // Entities        
@@ -20,6 +20,7 @@ namespace WebProgramlamaV2_Net5._0.Models
         public DbSet<Patron> patronlar { get; set; }
         public DbSet<Yazilimci> yazilimcilar { get; set; }
         public DbSet<Basvuru> Basvurular { get; set; }
+
 
     }
 }

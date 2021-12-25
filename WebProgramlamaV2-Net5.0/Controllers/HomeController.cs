@@ -1,9 +1,12 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using WebProgramlamaV2_Net5._0.Models;
 
@@ -28,6 +31,33 @@ namespace WebProgramlamaV2_Net5._0.Controllers
             ilanlar = dbServer.isilanlari.ToList();
             return View(ilanlar);
         }
+
+
+        [HttpGet]
+        public JsonResult GetById(int id)
+        {
+            return Json(dbServer.isilanlari.Find(id));
+        }
+        public JsonResult GetAll()
+        {
+            return Json(dbServer.isilanlari.ToList());
+        }
+
+
+        [HttpGet]
+
+        public async Task<IActionResult> SignOut()
+        {
+            await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+            return Redirect("Index");
+        }
+
+
+
+
+
+
+
         public IActionResult Isara()
         {
             ilanlar = dbServer.isilanlari.ToList();
@@ -67,6 +97,7 @@ namespace WebProgramlamaV2_Net5._0.Controllers
         [HttpPost]
         public IActionResult PatronKayitBackend(Patron ptr)
         {
+            ptr.Rolename = "P";
             dbServer.patronlar.Add(ptr);
             dbServer.SaveChanges();
             return RedirectToAction("PatronEnter");
@@ -77,6 +108,7 @@ namespace WebProgramlamaV2_Net5._0.Controllers
         }
         public IActionResult YazilimciKayitBackend(Yazilimci yzm)
         {
+            yzm.Rolename = "Y";
             dbServer.yazilimcilar.Add(yzm);
             dbServer.SaveChanges();
             return RedirectToAction("YazilimciEnter");
@@ -129,6 +161,99 @@ namespace WebProgramlamaV2_Net5._0.Controllers
         {
             return View();
         }
+
+        [HttpPost]
+        public async Task<IActionResult> AdminEnterLogin(userloginmodel userlogin)
+        {
+            Models.Admin user = dbServer.Admins.Where(_ => _.Email == userlogin.Email && _.Parola == userlogin.Parola).FirstOrDefault();
+
+            //     var confirmed = dbServer.users.FirstOrDefault(
+            //       x => x.Email == userlogin.Email && x.Parola == userlogin.Parola);
+            if (user != null)
+            {
+                var claims = new List<Claim>
+                {
+                    new Claim(ClaimTypes.Name,user.Email),
+                    new Claim("Name",user.Name)
+                };
+
+                var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
+                var authProperties = new AuthenticationProperties() { IsPersistent = user.isPersistent };
+                await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(claimsIdentity), authProperties);
+
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                return RedirectToAction("AdminEnter");
+            }
+
+        }
+
+
+        [HttpPost]
+        public async Task<IActionResult> YazilimciEnterLogin(userloginmodel userlogin)
+        {
+            Models.Yazilimci user = dbServer.yazilimcilar.Where(_ => _.Email == userlogin.Email && _.Parola == userlogin.Parola).FirstOrDefault();
+
+            //     var confirmed = dbServer.users.FirstOrDefault(
+            //       x => x.Email == userlogin.Email && x.Parola == userlogin.Parola);
+            if (user != null)
+            {
+                var claims = new List<Claim>
+                {
+                    new Claim(ClaimTypes.Name,user.Email),
+                    new Claim("Name",user.Name),
+                   new Claim(ClaimTypes.Role, user.Rolename)
+                };
+
+                var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
+                var authProperties = new AuthenticationProperties() { IsPersistent = user.isPersistent };
+                await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(claimsIdentity), authProperties);
+
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                return RedirectToAction("AdminEnter");
+            }
+
+        }
+
+
+        [HttpPost]
+        public async Task<IActionResult> PatronEnterLogin(userloginmodel userlogin)
+        {
+            Models.Patron user = dbServer.patronlar.Where(_ => _.Email == userlogin.Email && _.Parola == userlogin.Parola).FirstOrDefault();
+
+            //     var confirmed = dbServer.users.FirstOrDefault(
+            //       x => x.Email == userlogin.Email && x.Parola == userlogin.Parola);
+            if (user != null)
+            {
+                var claims = new List<Claim>
+                {
+                    new Claim(ClaimTypes.Name,user.Email),
+                    new Claim("Name",user.Name)
+                };
+
+                var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
+                var authProperties = new AuthenticationProperties() { IsPersistent = user.isPersistent };
+                await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(claimsIdentity), authProperties);
+
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                return RedirectToAction("AdminEnter");
+            }
+
+        }
+
+
+
+
+
+
         public IActionResult PatronEnter()
         {
             return View();
