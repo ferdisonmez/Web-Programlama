@@ -13,8 +13,7 @@ namespace WebProgramlamaV2_Net5._0.Models
         public int kayitId { get; set; }
         [Required]
         public int IsilaniId { get; set; }
-        [Required]
-        public int PatronId { get; set; }
+
         [Required]
         public int yazilimciId { get; set; }
 

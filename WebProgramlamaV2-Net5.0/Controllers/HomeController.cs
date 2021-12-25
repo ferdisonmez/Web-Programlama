@@ -83,13 +83,6 @@ namespace WebProgramlamaV2_Net5._0.Controllers
             return View();
         }
 
-        [HttpPost]
-        public IActionResult IlanBasvuru()
-        {
-            //
-            return View();
-        }
-
         public IActionResult PatronKayit()
         {
             return View();
@@ -290,7 +283,20 @@ namespace WebProgramlamaV2_Net5._0.Controllers
                    return View(ilanlar.Where(x => x.pozisyon.StartsWith(search) || search == null).ToList());
                }
            }
-           
+
+        public IActionResult IlanBasvuru(int id)
+        {
+            var ısilani1=dbServer.isilanlari.Find(id);
+            var deger = ısilani1.Patronid;
+            var yazdeger = 5;
+            Basvuru bs = new Basvuru();
+            bs.IsilaniId = ısilani1.id;
+            bs.yazilimciId = yazdeger;
+            dbServer.Basvurular.Add(bs);
+            dbServer.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
