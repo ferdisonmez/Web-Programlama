@@ -2,7 +2,7 @@
 
 namespace WebProgramlamaV2_Net5._0.Migrations
 {
-    public partial class main : Migration
+    public partial class Main : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -31,7 +31,6 @@ namespace WebProgramlamaV2_Net5._0.Migrations
                     kayitId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     IsilaniId = table.Column<int>(type: "int", nullable: false),
-                    PatronId = table.Column<int>(type: "int", nullable: false),
                     yazilimciId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
@@ -49,7 +48,8 @@ namespace WebProgramlamaV2_Net5._0.Migrations
                     lokasyon = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     pozisyon = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     deneyim = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    aciklama = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    aciklama = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Patronid = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {

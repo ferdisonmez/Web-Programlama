@@ -11,7 +11,7 @@ namespace WebProgramlamaV2_Net5._0.Models
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("server=LAPTOP-7VBS23NT; database=projectDB; integrated security=true;");
+            optionsBuilder.UseSqlServer("server=DESKTOP-A2K7DC0; database=projectDB; integrated security=true;");
 
         }
         // Entities        

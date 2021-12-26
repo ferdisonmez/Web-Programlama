@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
@@ -10,6 +12,7 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using WebProgramlamaV2_Net5._0.Models;
 
+
 namespace WebProgramlamaV2_Net5._0.Controllers
 {
     public class HomeController : Controller
@@ -18,12 +21,19 @@ namespace WebProgramlamaV2_Net5._0.Controllers
         static public List<Patron> db = new List<Patron>();
         static public List<Yazilimci> dby = new List<Yazilimci>();
         static public List<Isilani> ilanlar = new List<Isilani>();
-        
+
+        private readonly IHttpContextAccessor _httpContextAccessor;
+
+        public HomeController(IHttpContextAccessor httpContextAccessor)
+        {
+            this._httpContextAccessor = httpContextAccessor;
+        }
+
         Context dbServer = new Context();
-        public HomeController(ILogger<HomeController> logger)
+     /*   public HomeController(ILogger<HomeController> logger)
         {
             _logger = logger;
-        }
+        }*/
 
         public IActionResult Index()
         {
@@ -45,7 +55,6 @@ namespace WebProgramlamaV2_Net5._0.Controllers
 
 
         [HttpGet]
-
         public async Task<IActionResult> SignOut()
         {
             await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
@@ -76,7 +85,7 @@ namespace WebProgramlamaV2_Net5._0.Controllers
             return View();
         }
 
-
+        [Authorize(Roles = "A,P")]
         public IActionResult IlanVer()
         {
            
@@ -133,6 +142,16 @@ namespace WebProgramlamaV2_Net5._0.Controllers
          
         }
 
+        [Authorize(Roles = "A,P")]
+        public IActionResult IlanDelete(int id)
+        {
+            var temp = dbServer.isilanlari.Find(id);
+            dbServer.isilanlari.Remove(temp);
+            dbServer.SaveChanges();
+            return RedirectToAction("Index");
+
+        }
+
         [HttpPost]
         public IActionResult KullaniciEnter(String Deger)
         {
@@ -167,20 +186,41 @@ namespace WebProgramlamaV2_Net5._0.Controllers
                 var claims = new List<Claim>
                 {
                     new Claim(ClaimTypes.Name,user.Email),
-                    new Claim("Name",user.Name)
+                    new Claim("Name",user.Rolename),
+                    new Claim(ClaimTypes.Role, user.Rolename)
                 };
 
                 var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
                 var authProperties = new AuthenticationProperties() { IsPersistent = user.isPersistent };
                 await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(claimsIdentity), authProperties);
 
-                return RedirectToAction("Index");
+                return RedirectToAction("AdminPage");
             }
             else
             {
                 return RedirectToAction("AdminEnter");
             }
 
+        }
+
+        [Authorize(Roles = "A")]
+        public IActionResult AdminPage()
+        {
+            var isliste = dbServer.isilanlari.ToList();
+            var yzmliste = dbServer.yazilimcilar.ToList();
+            var patronliste = dbServer.patronlar.ToList();
+
+            Clisteleme cls = new Clisteleme();
+            cls.isilans = isliste;
+            cls.yzms = yzmliste;
+            cls.ptrs = patronliste;
+
+            return View(cls);
+        }
+
+        public IActionResult ErrorPage()
+        {
+            return View();
         }
 
 
@@ -208,12 +248,33 @@ namespace WebProgramlamaV2_Net5._0.Controllers
             }
             else
             {
-                return RedirectToAction("AdminEnter");
+                return RedirectToAction("YazilimciEnter");
             }
 
         }
+        public IActionResult patrondeletefromadmin(int id)
+        {
+            var temp = dbServer.patronlar.Find(id);
+            dbServer.patronlar.Remove(temp);
+            dbServer.SaveChanges();
+            return RedirectToAction("AdminPage");
+        }
+        public IActionResult ilandeletefromadmin(int id)
+        {
+            var temp = dbServer.isilanlari.Find(id);
+            dbServer.isilanlari.Remove(temp);
+            dbServer.SaveChanges();
+            return RedirectToAction("AdminPage");
 
+        }
 
+        public IActionResult yazilimcideletefromadmin(int id)
+        {
+            var temp = dbServer.yazilimcilar.Find(id);
+            dbServer.yazilimcilar.Remove(temp);
+            dbServer.SaveChanges();
+            return RedirectToAction("AdminPage");
+        }
         [HttpPost]
         public async Task<IActionResult> PatronEnterLogin(userloginmodel userlogin)
         {
@@ -226,24 +287,23 @@ namespace WebProgramlamaV2_Net5._0.Controllers
                 var claims = new List<Claim>
                 {
                     new Claim(ClaimTypes.Name,user.Email),
-                    new Claim("Name",user.Name)
+                    new Claim("Name",user.Name),
+                   new Claim(ClaimTypes.Role, user.Rolename)
                 };
 
                 var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
                 var authProperties = new AuthenticationProperties() { IsPersistent = user.isPersistent };
+
                 await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(claimsIdentity), authProperties);
 
                 return RedirectToAction("Index");
             }
             else
             {
-                return RedirectToAction("AdminEnter");
+                return RedirectToAction("PatronEnter");
             }
 
         }
-
-
-
 
 
 
@@ -258,10 +318,29 @@ namespace WebProgramlamaV2_Net5._0.Controllers
         [HttpPost]
         public IActionResult IsilaniEnter(Isilani isln)
         {
-           
-            dbServer.isilanlari.Add(isln);
-            dbServer.SaveChanges();
-            return RedirectToAction("Index");
+            int flag = 0;
+            foreach(var item in dbServer.patronlar)
+            {
+                if (item.Sirket == isln.sirketismi)
+                {
+                    flag = 1;
+                    break;
+                }
+            }
+
+            if (flag==0)
+            {
+                return RedirectToAction("Ilanver");
+            }
+            else {
+
+
+                Patron patron = dbServer.patronlar.Where(x => x.Sirket == isln.sirketismi).FirstOrDefault();
+                isln.Patronid = patron.id;
+                dbServer.isilanlari.Add(isln);
+                dbServer.SaveChanges();
+                return RedirectToAction("Index");
+            }
         }
            public ActionResult IsaraDatabase(string option, string search)
            {

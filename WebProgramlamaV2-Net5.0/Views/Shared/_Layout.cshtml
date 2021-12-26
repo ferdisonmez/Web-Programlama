@@ -67,11 +67,16 @@
 
                             @if (_httpHttpContextAccessor.HttpContext.User.Identity.IsAuthenticated)
                             {
+                                if (_httpHttpContextAccessor.HttpContext.User.Claims.FirstOrDefault(c => c.Type == "Name").Value == "A")
+                                {
+                                    <li class="gradient-button"><a asp-action="AdminPage" asp-controller="Home">AdminPage</a></li>
+                                }
 
                                 <li><div class="gradient-button"><a asp-action="SignOut" asp-controller="Home"><i class="fa fa-sign-in-alt"></i>Çıkış</a></div></li>
                                 <li class="nav-item">
                                     <a class="nav-link text-dark">@_httpHttpContextAccessor.HttpContext.User.Claims.FirstOrDefault(c => c.Type == "Name").Value</a>
                                 </li>
+
                             }
                             else
                             {
@@ -81,7 +86,6 @@
                                 <li><div class="gradient-button"><a asp-action="UserKayitSecim" asp-controller="Home"><i class="fa fa-sign-in-alt"></i>Kayıt Ol</a></div></li>
 
                             }
-
 
                         </ul>
                         <a class='menu-trigger'>

@@ -1,12 +1,45 @@
-﻿@model Isilani 
+﻿@model WebProgramlamaV2_Net5._0.Models.Isilani
 
+@{
+    ViewData["Title"] = "IlanSayfasi";
+}
 
-<h1>@Model.sirketismi</h1><br>
-<h1>@Model.lokasyon</h1><br>
-<h1>@Model.pozisyon</h1><br>
-<h1>@Model.deneyim</h1><br>
-<h1>@Model.aciklama</h1><br>
-<h1>@Model.deneyim</h1>
-
-
-<a class="btn btn-primary" asp-controller="Home" asp-action="IlanBasvuru" asp-route-id=@Model.id role="button"> Başvur</a>
+<div>
+    <h4>Isilani</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.sirketismi)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.sirketismi)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.lokasyon)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.lokasyon)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.pozisyon)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.pozisyon)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.deneyim)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.deneyim)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.aciklama)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.aciklama)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Index">Geri</a>
+</div>

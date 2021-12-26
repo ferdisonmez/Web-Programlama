@@ -9,8 +9,8 @@ using WebProgramlamaV2_Net5._0.Models;
 namespace WebProgramlamaV2_Net5._0.Migrations
 {
     [DbContext(typeof(Context))]
-    [Migration("20211203203304_Testmigration")]
-    partial class Testmigration
+    [Migration("20211226110026_Main")]
+    partial class Main
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -38,8 +38,14 @@ namespace WebProgramlamaV2_Net5._0.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Rolename")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Surname")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("isPersistent")
+                        .HasColumnType("bit");
 
                     b.HasKey("id");
 
@@ -112,12 +118,18 @@ namespace WebProgramlamaV2_Net5._0.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Rolename")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Sirket")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Surname")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("isPersistent")
+                        .HasColumnType("bit");
 
                     b.HasKey("id");
 
@@ -143,6 +155,9 @@ namespace WebProgramlamaV2_Net5._0.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Rolename")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Surname")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -154,6 +169,9 @@ namespace WebProgramlamaV2_Net5._0.Migrations
                     b.Property<string>("experience")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("isPersistent")
+                        .HasColumnType("bit");
 
                     b.Property<string>("progLang")
                         .IsRequired()

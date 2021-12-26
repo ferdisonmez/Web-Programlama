@@ -29,7 +29,9 @@ namespace WebProgramlamaV2_Net5._0
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
                  .AddCookie(options =>
                  {
-                     options.LoginPath = "/Home/AdminEnter";
+                     options.LoginPath = "/Home/UserGirisSecim";
+                     options.AccessDeniedPath= "/Home/ErrorPage";
+                     options.LogoutPath = "/Home/Index";
                  });
             services.AddHttpContextAccessor();
 

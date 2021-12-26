@@ -1,0 +1,136 @@
+﻿@model Clisteleme
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                ("Şirket İsmi")
+            </th>
+            <th>
+                ("Lokasyon")
+            </th>
+            <th>
+                ("Pozisyon")
+            </th>
+            <th>
+                ("Deneyim")
+            </th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.isilans)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.sirketismi)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.lokasyon)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.pozisyon)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.deneyim)
+                </td>
+                <td>
+                    @Html.ActionLink("Delete", "ilandeletefromadmin", "Home", new { item.id })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<br />
+<hr></hr>
+
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                ("PatronName")
+            </th>
+            <th>
+                ("Surname")
+            </th>
+            <th>
+                ("Email")
+            </th>
+            <th>
+                ("Şirket")
+            </th>
+           
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.ptrs)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Surname)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Sirket)
+                </td>
+                <td>
+                    @Html.ActionLink("Delete", "patrondeletefromadmin", "Home", new { item.id })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<br />
+<hr>
+</hr>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                ("YazilimciName")
+            </th>
+            <th>
+                ("Surname")
+            </th>
+            <th>
+                ("Email")
+            </th>
+            <th>
+                ("Deneyim")
+            </th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.yzms)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Surname)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.experience)
+                </td>
+                <td>
+                    @Html.ActionLink("Delete", "yazilimcideletefromadmin", "Home", new { item.id })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
