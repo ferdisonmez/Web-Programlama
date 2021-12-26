@@ -21,19 +21,19 @@ namespace WebProgramlamaV2_Net5._0.Controllers
         static public List<Patron> db = new List<Patron>();
         static public List<Yazilimci> dby = new List<Yazilimci>();
         static public List<Isilani> ilanlar = new List<Isilani>();
-
+    /*
         private readonly IHttpContextAccessor _httpContextAccessor;
 
         public HomeController(IHttpContextAccessor httpContextAccessor)
         {
             this._httpContextAccessor = httpContextAccessor;
         }
-
+        */
         Context dbServer = new Context();
-     /*   public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger)
         {
             _logger = logger;
-        }*/
+        }
 
         public IActionResult Index()
         {
